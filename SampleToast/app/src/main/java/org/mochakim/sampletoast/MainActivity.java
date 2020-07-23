@@ -13,16 +13,19 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText editText1;
-    EditText editText2;
+//    EditText editText1;
+//    EditText editText2;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editText1 = findViewById(R.id.editText);
-        editText2 = findViewById(R.id.editText2);
+        textView
+
+//        editText1 = findViewById(R.id.editText);
+//        editText2 = findViewById(R.id.editText2);
     }
 
     public void onButton1Clicked(View v) {
