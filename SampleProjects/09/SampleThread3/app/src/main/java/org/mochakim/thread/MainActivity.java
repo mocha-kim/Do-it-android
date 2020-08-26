@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     TextView textView;
-    Handler handler = new Handler();
+    MainHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
                 thread.start();
             }
         });
+
+        handler = new MainHandler();
     }
 
     class BackgroundThread extends Thread {
@@ -44,12 +46,12 @@ public class MainActivity extends AppCompatActivity {
                 value += 1;
                 Log.d("Thread", "value : " + value);
 
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        textView.setText("value 값 : " + value);
-                    }
-                });
+                Message message = handler.obtainMessage();
+                Bundle bundle = new Bundle();
+                bundle.putInt("value", value);
+                message.setData(bundle);
+
+                handler.sendMessage(message);
             }
         }
     }
